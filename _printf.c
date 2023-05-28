@@ -10,6 +10,9 @@
 int _printf(const char *format, ...)
 {
 	int i = 0;
+	int j;
+	char *str;
+	char c;
 
 	va_list list;
 
@@ -22,10 +25,17 @@ int _printf(const char *format, ...)
 			switch (format[i])
 			{
 				case 'c':
-					printf("%c", va_arg(list, int));
+					c = va_arg(list, int);
+					_putchar(c);
+					_putchar('\n');
 					break;
 				case 's':
-					printf("%s", va_arg(list, char *));
+					str = va_arg(list, char *);
+					for (j = 0; str[j] != '\0'; j++)
+					{
+						_putchar(str[j]);
+					}
+					_putchar('\n');
 					break;
 					default:
 						i++;
@@ -34,8 +44,6 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	}
-	printf("\n");
-	printf("%d\n", i);
 	va_end(list);
 	return (0);
 }
