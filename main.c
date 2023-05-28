@@ -8,6 +8,6 @@
  */
 int main(void)
 {
-	_printf("ceis", 'B', "stSchool");
+	_printf("ceis", 'B', "alx");
 	return (0);
 }

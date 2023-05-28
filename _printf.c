@@ -44,6 +44,7 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	}
+	/*printf("%d\n", 1 + j);*/
 	va_end(list);
-	return (0);
+	return (1 + j);
 }
