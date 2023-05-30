@@ -3,4 +3,5 @@
 void _putchar(char c);
 int _printf(const char *format, ...);
 int _printint(const char *format, ...);
+int _printbin(const char *format, ...);
 #endif

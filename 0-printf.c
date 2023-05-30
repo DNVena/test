@@ -37,6 +37,10 @@ int _printf(const char *format, ...)
 					}
 					_putchar('\n');
 					break;
+				case '%':
+					str = va_arg(list, char *);
+					_putchar('%');
+					break;
 					default:
 						i++;
 						continue;
@@ -44,7 +48,6 @@ int _printf(const char *format, ...)
 			i++;
 		}
 	}
-	/*printf("%d\n", 1 + j);*/
 	va_end(list);
-	return (1 + j);
+	return (0);
 }
