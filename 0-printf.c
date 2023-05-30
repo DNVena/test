@@ -1,53 +1,46 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
 
 /**
- * _printf - prints char
+ * _printf - prints char and string
  * @format: takes pointer
- * Return: integer
+ * Return: int
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
-	int j;
-	char *str;
-	char c;
-
+	int i, j = 0;
+	int k = 0;
+	int l = 0;
+	char buffer[BUFF_SIZE];
 	va_list list;
 
-	va_start(list, format);
-
-	if (format)
+	if (format == NULL)
 	{
-		while (format[i])
+		return (-1);
+	}
+
+	va_start(list, format);
+	if (format[l] == '%')
+	{
+		_putchar('%');
+		return (1);
+	}
+	else
+	{
+		for (i = 0; format && format[i] != '\0'; i++)
 		{
-			switch (format[i])
+			while (format[k])
 			{
-				case 'c':
-					c = va_arg(list, int);
-					_putchar(c);
-					_putchar('\n');
-					break;
-				case 's':
-					str = va_arg(list, char *);
-					for (j = 0; str[j] != '\0'; j++)
-					{
-						_putchar(str[j]);
-					}
-					_putchar('\n');
-					break;
-				case '%':
-					str = va_arg(list, char *);
-					_putchar('%');
-					break;
-					default:
-						i++;
-						continue;
+				buffer[j++] = format[i];
+				k++;
+				break;
 			}
-			i++;
 		}
 	}
+	write(1, &buffer[0], j);
+
 	va_end(list);
-	return (0);
+	return (i);
 }
